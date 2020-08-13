@@ -1,5 +1,6 @@
 const searchInput = document.getElementById('searchInput')
 const searchBtn = document.getElementById('searchBtn')
+const gitHubCard = document.getElementById('github-card')
 
 const githubCard = {
     name: document.getElementById('github-username'),
@@ -22,6 +23,9 @@ searchBtn.addEventListener('click', () => {
     xhr.addEventListener('readystatechange', (searchInputText) => {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
+            if (gitHubCard.classList.contains('d-none')) {
+                gitHubCard.classList.remove('d-none')
+            }
 
             const data = JSON.parse(xhr.responseText)
             console.log(data)
