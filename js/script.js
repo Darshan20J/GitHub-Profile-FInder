@@ -9,7 +9,11 @@ const githubCard = {
     following: document.getElementById('github-following'),
     gist: document.getElementById('github-gist'),
     bio: document.getElementById('github-bio'),
-    portfolio: document.getElementById('github-portfolio')
+    portfolio: document.getElementById('github-portfolio'),
+    followersCount: document.getElementById('github-followers-count'),
+    followingCount: document.getElementById('github-following-count'),
+    publicRepos: document.getElementById('github-public-repos'),
+    publicGists: document.getElementById('github-public-gists'),
 }
 
 searchBtn.addEventListener('click', () => {
@@ -26,12 +30,17 @@ searchBtn.addEventListener('click', () => {
             githubCard.profileImage.src = data.avatar_url
             githubCard.profileLink.href = data.html_url
             githubCard.profileLink.innerText = data.login
-            githubCard.gist.href = data.gists_url
+            githubCard.gist.href = `https://gist.github.com/${data.login}`
             githubCard.bio.innerText = data.bio
-            githubCard.portfolio.href = data.blog
+            githubCard.portfolio.href = `https://${data.blog}`
             githubCard.portfolio.innerText = data.name
-            githubCard.followers.href = "https://github.com/" + data.login + "?tabs=followers"
-            githubCard.following.href = data.following_url
+            githubCard.followers.href = `https://github.com/${data.login}?tab=followers`
+            githubCard.followersCount.innerText = data.followers
+            githubCard.following.href = `https://github.com/${data.login}?tab=following`
+            githubCard.followingCount.innerText = data.following
+            githubCard.publicRepos.innerText = data.public_repos
+            githubCard.publicGists.innerText = data.public_gists
+
 
         }
     })
